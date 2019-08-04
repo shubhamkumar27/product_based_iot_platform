@@ -9,7 +9,7 @@ def dashboard(request):
     for stat in stats:
         tt = str(stat.number) + ":" +stat.status
         print(tt)
-    return render(request,'iot_control/dashboard.html')
+    return render(request,'dashboard.html')
 
 def toggle(request):
     num = request.GET.get('num')
