@@ -1,4 +1,14 @@
 {% extends 'base.html' %}
+{% block nav %}
+				          <li><a href="/dashboard">Dashboard</a></li>
+                          {% if user.is_authenticated %}
+                            <li><h5 class="text-white">Hello, {{user.first_name}}</h5></li>
+                            <li><a href="/logout">Logout</a></li>
+                            {% else %}
+                            <li><a href="/register">Register</a></li>
+				            <li><a href="/login">Login</a></li>
+                            {% endif %}
+{% endblock %}
 {% block style %}
 <style>
 	.center {
@@ -71,16 +81,11 @@
 {% endblock %}
 
 {% block banner %}
+
 <div align="center" class="form">
 	<form action="" method="get">
 		<button type="button" id="D1-on" class="button button1" >D1 ON</button>
 		<button type="button" id="D1-off" class="button button3" >D1 OFF</button>
-		<br>
-		<button type="button" id="D2-on" class="button button1" >D2 ON</button>
-		<button type="button" id="D2-off" class="button button3" >D2 OFF</button>
-		<br>
-		<button type="button" id="D3-on" class="button button1" >D3 ON</button>
-		<button type="button" id="D3-off" class="button button3" >D3 OFF</button>
 		<br>
 	</form>
 	<br><br>
@@ -90,14 +95,14 @@
 {% block scripts %}
 <script>
 		document.getElementById('D1-on').addEventListener('click', function() {
-				var url = "http://127.0.0.1:8000/dashboard/toggle/?num=1&sta=on";
+				var url = "http://127.0.0.1:8000/dashboard/p4toggle/?num={{ relay1 }}&sta=on";
 				$.getJSON(url, function(data) {
 					console.log(data);
 				});
 		});
 
 		document.getElementById('D1-off').addEventListener('click', function() {
-				var url = "http://127.0.0.1:8000/dashboard/toggle/?num=1&sta=off";
+				var url = "http://127.0.0.1:8000/dashboard/toggle/?num={{ relay1 }}&sta=off";
 				$.getJSON(url, function(data) {
 					console.log(data);
 				});
@@ -134,6 +139,3 @@
 		});
 </script>
 {% endblock %}
-
-
-

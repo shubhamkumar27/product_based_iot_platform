@@ -1719,7 +1719,7 @@ pre code {
 
 .form-control::placeholder {
   color: #6c757d;
-  opacity: 1;
+  opacity: 5;
 }
 
 .form-control:disabled, .form-control[readonly] {

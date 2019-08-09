@@ -19,5 +19,6 @@ from . import views
 
 urlpatterns = [
     path('', views.dashboard, name='dash'),
-    path('toggle/', views.toggle, name='togg'),
+    path('toggle/', views.p4toggle, name='togg'),
+    path('devregister/', views.devregister, name='devregister'),
 ]

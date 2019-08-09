@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block nav %}
+<li><a href="/dashboard">Dashboard</a></li>
+{% if user.is_authenticated %}
+<li><h5 class="text-white">Hello, {{user.first_name}}</h5></li>
+<li><a href="/logout">Logout</a></li>
+{% else %}
+<li><a href="/register">Register</a></li>
+<li><a href="/login">Login</a></li>
+{% endif %}
+{% endblock %}
+{% block banner %}
+<div class="banner-content col-lg-6 col-md-6">
+    <h2 class="text-white">Register your device</h2><br>
+    <form action="/dashboard/devregister/" method="post">{% csrf_token %}
+        <div class="row">
+            <div class="col-lg-8 form-group">
+                <br>
+                <input name="product_id" placeholder="Product ID" class="common-input mb-20 form-control" required="" type="text">
+                <select name="type" class="common-input mb-20 form-control" required="">
+                    <option>4NODE</option>
+                    <option>8NODE</option>
+                </select>
+                <input name="phone" placeholder="Phone number" class="common-input mb-20 form-control" required="" type="number">
+                {% for message in messages %}
+                <h3 class="text-white"> {{message}}  </h3>
+                <br>
+                {% endfor %}
+                <input type="Submit" class="genric-btn danger circle">
+            </div>
+        </div>
+    </form>
+</div>
+<div class="banner-img col-lg-6 col-md-6">
+    <img class="img-fluid" src="{% static 'img/banner-img.png' %}" alt="">
+</div>
+{% endblock %}
+

@@ -1,5 +1,15 @@
 {% extends 'base.html' %}
 {% load static %}
+{% block nav %}
+				          <li><a href="/dashboard">Dashboard</a></li>
+                          {% if user.is_authenticated %}
+                            <li><h5 class="text-white">Hello, {{user.first_name}}</h5></li>
+                            <li><a href="/logout">Logout</a></li>
+                            {% else %}
+                            <li><a href="/register">Register</a></li>
+				            <li><a href="/login">Login</a></li>
+                            {% endif %}
+{% endblock %}
 {% block banner %}
 						<div class="banner-content col-lg-6 col-md-6">
 							<h1>

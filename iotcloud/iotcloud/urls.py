@@ -22,4 +22,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.home,name='home'),
     path('dashboard/',include('iot_control.urls'),name='dash'),
+    # path('devregister/',include('iot_control.urls'),name='devregister'),
+    path('register/', views.register, name='register'),
+    path('login/', views.login, name='login'),
+    path('logout/', views.logout, name='logout'),
 ]

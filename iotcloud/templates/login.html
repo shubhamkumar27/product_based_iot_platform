@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block nav %}
+<li><a href="/register">Register</a></li>
+{% endblock %}
+{% block banner %}
+<div class="banner-content col-lg-6 col-md-6">
+    <h2 class="text-white">Login Here</h2><br>
+    <form action="/login/" method="post">{% csrf_token %}
+        <div class="row">
+            <div class="col-lg-8 form-group ">
+                <br>
+                <input name="username" placeholder="Username" class="common-input mb-20 form-control" required="" type="text">
+                <input name="password" placeholder="Password" class="common-input mb-20 form-control" required="" type="password">
+                {% for message in messages %}
+                <h4 class="text-white"> {{message}} </h4>
+                <br>
+                {% endfor %}
+                <input type="Submit" class="genric-btn danger circle">
+            </div>
+        </div>
+    </form>
+</div>
+<div class="banner-img col-lg-6 col-md-6">
+    <img class="img-fluid" src="{% static 'img/banner-img.png' %}" alt="">
+</div>
+{% endblock %}
+
