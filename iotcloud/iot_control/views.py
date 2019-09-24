@@ -79,3 +79,4 @@ def devregister(request):
     exuser = Extendeduser(user=request.user, product_id=product_id, product_type=type, phone_num=phn)
     exuser.save()
     return redirect('/dashboard/')
+#############
